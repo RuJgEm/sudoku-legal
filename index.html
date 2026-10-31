@@ -168,16 +168,18 @@
   <section>
     <h2><span class="num">02</span> Datos que recopilamos</h2>
     <h3>Datos que tú nos proporcionas</h3>
-    <p>Si creas una cuenta para jugar en modo multijugador (Versus / Salas), recopilamos:</p>
+    <p>Puedes jugar en solitario sin cuenta. Si creas una cuenta para jugar en modo multijugador (Versus / Salas), recopilamos:</p>
     <ul>
       <li><strong>Correo electrónico y contraseña</strong>, gestionados de forma segura por Firebase Authentication — nunca vemos ni almacenamos tu contraseña en texto plano.</li>
+      <li>Si inicias sesión <strong>con Google</strong>: tu correo electrónico y el identificador de tu cuenta de Google. Firebase Authentication guarda también el nombre y la foto de perfil de esa cuenta; la app no los usa ni los muestra a otros jugadores.</li>
       <li><strong>Nombre de usuario</strong> y un <strong>código de usuario único</strong> generado automáticamente, para que otros jugadores puedan encontrarte y añadirte como amigo.</li>
     </ul>
     <h3>Datos generados por el uso de la app</h3>
     <ul>
       <li>Lista de amigos y solicitudes de amistad.</li>
+      <li>Hora de tu última conexión, para mostrar a tus amigos si estás en línea. Solo se actualiza mientras la app está abierta.</li>
       <li>Datos de partidas multijugador: progreso, errores cometidos, tiempos y una instantánea del tablero al finalizar, para mostrar los resultados a ambos jugadores.</li>
-      <li>Estadísticas de juego (partidas ganadas, mejor tiempo, puntuación) — se guardan <strong>localmente en tu dispositivo</strong> y no se comparten con terceros.</li>
+      <li>Estadísticas de juego (partidas jugadas y ganadas, mejores tiempos, puntuación), incluidas las del modo solitario. Sin cuenta se guardan <strong>solo en tu dispositivo</strong>. Con la sesión iniciada se guardan también en tu cuenta, para no perderlas al cambiar de móvil; son privadas y solo tú puedes verlas.</li>
     </ul>
     <div class="not-collected">
       <p>No recopilamos</p>
@@ -197,7 +199,8 @@
   <section>
     <h2><span class="num">04</span> Dónde se almacenan los datos</h2>
     <p>Los datos de cuenta y multijugador se almacenan en <strong>Firebase (Google Cloud)</strong>, sujeto a las medidas de seguridad de Google LLC. Puedes consultar su política en <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">firebase.google.com/support/privacy</a>.</p>
-    <p>Las estadísticas del modo un jugador permanecen únicamente en tu dispositivo.</p>
+    <p>Si juegas sin cuenta, tus estadísticas permanecen únicamente en tu dispositivo.</p>
+    <p>La app usa <strong>Shorebird</strong> para recibir actualizaciones de código sin pasar por la tienda. Al comprobar si hay una actualización, envía a Shorebird información técnica (versión de la app, plataforma y un identificador aleatorio de instalación), sin datos de tu cuenta.</p>
   </section>
 
   <section>
