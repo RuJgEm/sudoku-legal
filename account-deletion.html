@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eliminar tu cuenta — Sudoku Versus</title>
+<style>
+  :root {
+    --bg: #FAFAF7;
+    --paper: #FFFFFF;
+    --ink: #1C1C1E;
+    --muted: #62625F;
+    --line: #E5E3DC;
+    --accent: #3D4FE0;
+    --accent-soft: #EEF0FC;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #17181C;
+      --paper: #1D1F24;
+      --ink: #EDEDEC;
+      --muted: #9C9CA3;
+      --line: #303138;
+      --accent: #8B97FF;
+      --accent-soft: #262A3E;
+    }
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, ui-serif, Georgia, serif;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 4rem 1.5rem 6rem;
+  }
+
+  .masthead {
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+    margin-bottom: 0.4rem;
+  }
+  .grid-mark {
+    width: 1.05em;
+    height: 1.05em;
+    flex: none;
+    display: inline-grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 1px;
+    transform: translateY(0.12em);
+  }
+  .grid-mark span { background: var(--accent); }
+  .grid-mark span:nth-child(1),
+  .grid-mark span:nth-child(5),
+  .grid-mark span:nth-child(9) { background: var(--ink); opacity: 0.85; }
+
+  h1 {
+    font-family: ui-sans-serif, -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-weight: 700;
+    font-size: 1.9rem;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+    margin: 0;
+  }
+  .updated {
+    font-family: ui-sans-serif, -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0.9rem 0 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  section { margin-bottom: 2.4rem; }
+  section:last-of-type { margin-bottom: 0; }
+
+  h2 {
+    font-family: ui-sans-serif, -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 0.9rem;
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+  }
+  h2 .num {
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+    opacity: 0.7;
+  }
+
+  h3 {
+    font-family: ui-sans-serif, -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin: 1.1rem 0 0.4rem;
+    color: var(--ink);
+  }
+
+  p { margin: 0 0 0.9rem; font-size: 1.05rem; }
+  p:last-child { margin-bottom: 0; }
+
+  ul { margin: 0 0 0.9rem; padding-left: 1.3rem; }
+  li { margin-bottom: 0.5rem; font-size: 1.05rem; }
+  li:last-child { margin-bottom: 0; }
+
+  strong { color: var(--ink); font-weight: 700; }
+
+  a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .not-collected {
+    background: var(--accent-soft);
+    border-radius: 10px;
+    padding: 1.1rem 1.3rem;
+    margin-top: 0.9rem;
+  }
+  .not-collected p { font-family: ui-sans-serif, -apple-system, "Segoe UI", Roboto, sans-serif; font-size: 0.85rem; letter-spacing: 0.03em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.6rem; }
+  .not-collected ul { margin-bottom: 0; }
+  .not-collected li { font-family: ui-sans-serif, -apple-system, "Segoe UI", Roboto, sans-serif; font-size: 0.92rem; color: var(--ink); }
+
+  .contact-card {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--line);
+    font-family: ui-sans-serif, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  .contact-card a { font-weight: 600; }
+  .contact-card .label { font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 0.3rem; }
+
+  @media (max-width: 480px) {
+    .wrap { padding: 2.8rem 1.25rem 4rem; }
+    h1 { font-size: 1.55rem; }
+    p, li { font-size: 1rem; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="masthead">
+      <span class="grid-mark" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span>
+      <h1>Eliminar tu cuenta</h1>
+    </div>
+    <p class="updated">Sudoku Versus · SoftCode · Actualizada el 31 de octubre de 2026</p>
+  </header>
+
+  <section>
+    <h2><span class="num">01</span> Desde la app</h2>
+    <p>Es la forma más rápida y el borrado es inmediato:</p>
+    <ul>
+      <li>Abre <strong>Sudoku Versus</strong> e inicia sesión con la cuenta que quieres eliminar.</li>
+      <li>Ve a <strong>Ajustes → Cuenta → Eliminar cuenta</strong>.</li>
+      <li>Confirma en el diálogo.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="num">02</span> Sin la app</h2>
+    <p>Si ya no tienes la app instalada, escribe a <a href="mailto:macua1982@gmail.com?subject=Eliminar%20cuenta%20Sudoku%20Versus">macua1982@gmail.com</a> con el asunto "Eliminar cuenta" desde el email de tu cuenta, indicando tu nombre de usuario. La eliminaremos en un plazo máximo de 30 días.</p>
+  </section>
+
+  <section>
+    <h2><span class="num">03</span> Qué se borra</h2>
+    <ul>
+      <li>Tu cuenta de acceso (email, o el vínculo con tu cuenta de Google).</li>
+      <li>Tu perfil: nombre de usuario, código de usuario y contador de partidas.</li>
+      <li>Tus estadísticas online.</li>
+      <li>Tu lista de amigos y tus solicitudes de amistad, enviadas y recibidas. También desapareces de la lista de amigos de los demás.</li>
+    </ul>
+    <p>Si tienes un duelo o una sala en curso, cuenta como abandono.</p>
+  </section>
+
+  <section>
+    <h2><span class="num">04</span> Qué se conserva y cuánto tiempo</h2>
+    <ul>
+      <li><strong>Partidas multijugador ya terminadas</strong>: se conservan para que el resto de jugadores vea su resultado y se borran automáticamente en un máximo de 4 días desde que se crearon.</li>
+      <li><strong>Estadísticas del modo solitario</strong>: están solo en tu dispositivo; se borran al desinstalar la app.</li>
+    </ul>
+  </section>
+
+  <div class="contact-card">
+    <span class="label">Contacto</span>
+    <a href="mailto:macua1982@gmail.com">macua1982@gmail.com</a>
+  </div>
+</div>
+</body>
+</html>
